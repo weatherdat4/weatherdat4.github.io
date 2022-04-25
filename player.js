@@ -7,7 +7,6 @@ const volumeButton = document.querySelector('[name="mute"]')
 const volumeButtonIcon = volumeButton.querySelector('i.fas')
 
 let isPlaying = false
-let fetchInterval = null
 let currentVolume = 0.2
 
 audio.volume = currentVolume
@@ -71,16 +70,14 @@ playPauseButton.addEventListener('click', () => {
     playPauseButtonIcon.classList.remove('fa-pause')
     playPauseButtonIcon.classList.add('fa-play')
 
-    clearInterval(fetchInterval)
-    currentlyPlaying.innerText = 'Listen to Some Radio Station'
+
   } else {
     audio.play()
 
     playPauseButtonIcon.classList.remove('fa-play')
     playPauseButtonIcon.classList.add('fa-pause')
 
-    fetchCurrentlyPlaying()
-    fetchInterval = setInterval(fetchCurrentlyPlaying, 3000)
+
   }
 
   isPlaying = !isPlaying
